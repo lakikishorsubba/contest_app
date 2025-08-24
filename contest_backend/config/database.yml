@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  username: laki
+  password: laki
+  host: localhost
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: contest_backend
+
+test:
+  <<: *default
+  database: contest_backend_test
+
+production:
+  <<: *default
+  database: contest_production
+  username: laki
+  password: <%= ENV['CONTEST_DATABASE_PASSWORD'] %>
